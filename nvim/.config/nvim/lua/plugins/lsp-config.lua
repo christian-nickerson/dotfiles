@@ -2,7 +2,7 @@ return {
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
-		opts = { ensure_installed = { "black", "mypy", "ruff" } },
+		opts = { ensure_installed = { "black", "mypy", "ruff", "goimports", "golines" } },
 		config = function()
 			require("mason").setup()
 		end,
@@ -14,7 +14,7 @@ return {
 		opts = { auto_install = true },
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "pyright", "ruff" },
+				ensure_installed = { "lua_ls", "pyright", "ruff", "gopls", "golangci_lint_ls" },
 			})
 		end,
 	},
@@ -61,6 +61,23 @@ return {
 			})
 
 			lspconfig.mypy.setup({ capabilities = capabilities })
+
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+				cmd = { "gopls" },
+				filetypes = { "go", "gomod", "gotmpl", "gowork" },
+				root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+				settings = {
+					gopls = {
+						completeUnimported = true,
+						usePlaceholders = true,
+						analyses = {
+							unusedparams = true,
+						},
+						staticcheck = true,
+					},
+				},
+			})
 
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})

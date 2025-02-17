@@ -124,3 +124,7 @@ eval "$(pyenv init -)"
 
 # Created by `pipx` on 2024-10-12 14:07:03
 export PATH="$PATH:/home/christian-nickerson/.local/bin"
+
+# go workspace
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin

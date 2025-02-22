@@ -79,7 +79,7 @@ return {
 				},
 			})
 
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code action" })
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 		end,
@@ -95,8 +95,8 @@ return {
 
 		branch = "regexp",
 		keys = {
-			{ "<leader>vs", "<cmd>VenvSelect<cr>" },
-			{ "<leader>vc", "<cmd>VenvSelectCached<cr>" },
+			{ "<leader>vs", "<cmd>VenvSelect<cr>", desc = "VenvSelect select" },
+			{ "<leader>vc", "<cmd>VenvSelectCached<cr>", desc = "VenvSelect select cached" },
 		},
 
 		config = function()

@@ -1,24 +1,5 @@
 return {
 	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		build = ":Copilot auth",
-		event = "BufReadPost",
-
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	},
-	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		version = false, -- Never set this value to "*"! Never!
@@ -62,7 +43,8 @@ return {
 		},
 
 		opts = {
-			provider = "copilot",
+			provider = "claude",
+			claude = { model = "claude-3-7-sonnet-20250219" },
 		},
 	},
 }

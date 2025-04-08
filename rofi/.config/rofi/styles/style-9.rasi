@@ -25,8 +25,8 @@ configuration {
 
 * {
     font:                        "0xProto Nerd Font 10";
-    background:                  @mantle;
-    background-alt:              @crust;
+    background:                  @crust;
+    background-alt:              @mantle;
     foreground:                  @text;
     selected:                    @surface0;
     active:                      @base;

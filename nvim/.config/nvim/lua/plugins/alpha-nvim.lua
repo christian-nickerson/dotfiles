@@ -1,31 +1,46 @@
 return {
-	"goolord/alpha-nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
-		local alpha = require("alpha")
-		local startify = require("alpha.themes.startify")
+    "goolord/alpha-nvim",
+    config = function()
+        local alpha = require("alpha")
+        local dashboard = require("alpha.themes.dashboard")
 
-		startify.file_icons.provider = "devicons"
-		startify.section.header.val = {
-			"                                                     ",
-			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-			"                                                     ",
-		}
+        dashboard.section.header.opts.position = "center"
+        dashboard.section.footer.opts.position = "center"
+        dashboard.section.header.val = {
+            "                                                                              ",
+            "=================     ===============     ===============   ========  ========",
+            "\\\\ . . . . . . .\\\\   //. . . . . . .\\\\   //. . . . . . .\\\\  \\\\. . .\\\\// . . //",
+            "||. . ._____. . .|| ||. . ._____. . .|| ||. . ._____. . .|| || . . .\\/ . . .||",
+            "|| . .||   ||. . || || . .||   ||. . || || . .||   ||. . || ||. . . . . . . ||",
+            "||. . ||   || . .|| ||. . ||   || . .|| ||. . ||   || . .|| || . | . . . . .||",
+            "|| . .||   ||. _-|| ||-_ .||   ||. . || || . .||   ||. _-|| ||-_.|\\ . . . . ||",
+            "||. . ||   ||-'  || ||  `-||   || . .|| ||. . ||   ||-'  || ||  `|\\_ . .|. .||",
+            "|| . _||   ||    || ||    ||   ||_ . || || . _||   ||    || ||   |\\ `-_/| . ||",
+            "||_-' ||  .|/    || ||    \\|.  || `-_|| ||_-' ||  .|/    || ||   | \\  / |-_.||",
+            "||    ||_-'      || ||      `-_||    || ||    ||_-'      || ||   | \\  / |  `||",
+            "||    `'         || ||         `'    || ||    `'         || ||   | \\  / |   ||",
+            "||            .===' `===.         .==='.`===.         .===' /==. |  \\/  |   ||",
+            "||         .=='   \\_|-_ `===. .==='   _|_   `===. .===' _-|/   `==  \\/  |   ||",
+            "||      .=='    _-'    `-_  `='    _-'   `-_    `='  _-'   `-_  /|  \\/  |   ||",
+            "||   .=='    _-'          `-__\\._-'         `-_./__-'         `' |. /|  |   ||",
+            "||.=='    _-'                                                     `' |  /==.||",
+            "=='    _-'                        N E O V I M                         \\/   `==",
+            "\\   _-'                                                                `-_   /",
+            " `''                                                                      ``'  ",
+        }
 
-		-- Set menu
-		--  startify.section.buttons.val = {
-		--	  startify.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-		--	  startify.button("f", "  > Find file", ":cd $HOME/Workspace | Telescope find_files<CR>"),
-		--	  startify.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-		--	  startify.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
-		--	  startify.button("q", "  > Quit NVIM", ":qa<CR>"),
-		--  }
 
-		alpha.setup(startify.config)
-	end,
+        local function footer()
+            return "And now, they will fear you..."
+        end
+
+        dashboard.section.footer.val = footer()
+
+        dashboard.section.footer.opts.hl = "Type"
+        dashboard.section.header.opts.hl = "Include"
+        dashboard.section.buttons.opts.hl = "Keyword"
+
+        dashboard.opts.opts.noautocmd = true
+        alpha.setup(dashboard.opts)
+    end,
 }

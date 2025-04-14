@@ -146,7 +146,7 @@ wk.add({
 		mode = { "n" },
 		{ "<leader>c", group = "Code Actions", icon = "💡", nowait = true, remap = false },
 		{ "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code: actions" },
-		{ "<leader>cf", "<cmd>lua vim.lsp.buf.format<cr>", desc = "Code: format" },
+		{ "<leader>cf", "<cmd>lua vim.lsp.buf.format()<cr>", desc = "Code: format" },
 		{
 			"<Leader>cc",
 			"<cmd>lua require('neogen').generate()<cr>",

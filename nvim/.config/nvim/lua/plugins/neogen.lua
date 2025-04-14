@@ -10,6 +10,11 @@ return {
 						annotation_convention = "reST",
 					},
 				},
+				go = {
+					template = {
+						annotation_convention = "godoc",
+					},
+				},
 			},
 		})
 	end,

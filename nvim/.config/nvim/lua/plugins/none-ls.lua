@@ -16,6 +16,8 @@ return {
 				null_ls.builtins.formatting.goimports,
 				null_ls.builtins.formatting.golines,
 				null_ls.builtins.diagnostics.golangci_lint,
+                -- docker
+                null_ls.builtins.diagnostics.hadolint,
 			},
 
 			on_attach = function(client, bufnr)

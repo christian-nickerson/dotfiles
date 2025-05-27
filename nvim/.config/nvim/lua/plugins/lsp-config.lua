@@ -2,7 +2,6 @@ return {
 	{
 		"williamboman/mason.nvim",
 		lazy = false,
-		opts = { ensure_installed = { "pyright", "black", "ruff", "goimports", "golines" } },
 		config = function()
 			require("mason").setup()
 		end,
@@ -16,13 +15,17 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
+					"stylua",
 					"pyright",
 					"black",
 					"ruff",
 					"mypy",
 					"gopls",
+					"goimports",
+					"golines",
 					"golangci_lint_ls",
 					"dockerls",
+					"nixfmt",
 				},
 			})
 		end,
@@ -68,8 +71,6 @@ return {
 					},
 				},
 			})
-
-			lspconfig.mypy.setup({ capabilities = capabilities })
 
 			lspconfig.gopls.setup({
 				capabilities = capabilities,

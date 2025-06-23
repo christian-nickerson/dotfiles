@@ -14,3 +14,17 @@ if [[ -z "$ANTHROPIC_API_KEY" ]]; then
   fi
 fi
 
+# Only proceed if GEMINI_API_KEY is not already set
+if [[ -z "$GEMINI_API_KEY" ]]; then
+  # Check if 1Password CLI is installed
+  if command -v op &>/dev/null; then
+    # Try to get the key directly - this will prompt for authentication if needed
+    API_KEY=$(op read "op://Personal/Gemini API Key/credential" 2>/dev/null)
+    
+    if [[ -n "$API_KEY" ]]; then
+      export GEMINI_API_KEY="$API_KEY"
+      echo "Successfully retrieved Gemini API key from 1Password"
+    fi
+  fi
+fi
+

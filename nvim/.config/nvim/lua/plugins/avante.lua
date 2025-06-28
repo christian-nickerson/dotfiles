@@ -44,7 +44,16 @@ return {
 
 		opts = {
 			provider = "claude",
-			claude = { model = "claude-sonnet-4-20250514" },
+			providers = {
+				claude = {
+					endpoint = "https://api.anthropic.com",
+					model = "claude-sonnet-4-20250514",
+				},
+				gemini = {
+					endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+					model = "gemini-2.5-pro",
+				},
+			},
 		},
 	},
 }

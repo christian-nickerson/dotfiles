@@ -68,6 +68,12 @@ tooltip {
     color:@red;
 }
 
+#custom-mail:hover{
+    transition: all .3s ease;
+    color:@lavender;
+}
+
+
 #custom-notification {
     padding: 0px 10px;
     transition: all .3s ease;
@@ -128,6 +134,12 @@ tooltip {
     transition: all .3s ease;
     color:@text;
 
+}
+
+#custom-mail {
+    padding: 0px 10px;
+    transition: all .3s ease;
+    color: @text;
 }
 
 #network{
@@ -213,3 +225,5 @@ tooltip {
     padding: 0px 10px;
     transition: all .3s ease; 
 }
+
+

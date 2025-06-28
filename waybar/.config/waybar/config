@@ -2,7 +2,7 @@
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["custom/notification","group/expand"],
+        "modules-left": ["custom/notification", "custom/mail", "group/expand"],
         "modules-center": ["hyprland/workspaces"],
         "modules-right": ["pulseaudio","bluetooth","network","battery","clock"],
 
@@ -93,6 +93,19 @@
         "custom/endpoint":{
             "format": "|",
             "tooltip": false
+        },
+
+        "custom/mail": {
+            "exec": "bash ~/.config/waybar/scripts/check-mailspring.sh",
+            "return-type": "json",
+            "format": "{text}",
+            "format-icons": {
+                "read": "",
+                "unread": "",
+            },
+            "tooltip": true,
+            "interval": 60,
+            "on-click": "mailspring"
         },
 
         "group/expand": {

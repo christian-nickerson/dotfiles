@@ -18,6 +18,9 @@ return {
 				null_ls.builtins.diagnostics.golangci_lint,
 				-- docker
 				null_ls.builtins.diagnostics.hadolint,
+				-- rust
+				null_ls.builtins.formatting.rust_analyzer,
+				null_ls.builtins.diagnostics.rust_analyzer,
 			},
 
 			on_attach = function(client, bufnr)

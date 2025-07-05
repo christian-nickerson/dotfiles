@@ -26,6 +26,7 @@ return {
 					"golangci_lint_ls",
 					"dockerls",
 					"nixfmt",
+					"rust-analyzer",
 				},
 			})
 		end,

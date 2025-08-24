@@ -102,10 +102,14 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"mfussenegger/nvim-dap-python",
 		},
-
-		branch = "regexp",
 		config = function()
-			require("venv-selector").setup()
+			require("venv-selector").setup({
+				settings = {
+					options = {
+						notify_user_on_venv_activation = true,
+					},
+				},
+			})
 
 			vim.api.nvim_create_autocmd("VimEnter", {
 				desc = "Auto select virtualenv nvim open",

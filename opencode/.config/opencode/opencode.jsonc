@@ -1,0 +1,10 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    // Theme configuration
+    "theme": "system",
+    "autoupdate": true,
+    // Keybinds 
+    "keybinds": {
+        "leader": "ctrl+o",
+    }
+}

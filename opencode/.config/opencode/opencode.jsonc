@@ -1,0 +1,27 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+
+    // Theme configuration
+    "theme": "system",
+    "autoupdate": true,
+
+    // Keybinds 
+    "keybinds": {
+        "leader": "ctrl+o",
+    },
+
+    // Instructions
+    "instructions": ["~/.config/opencode/context7.md"],
+
+    // MCP Servers
+    "mcp": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "headers": {
+          "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
+        },
+        "enabled": true
+      }
+    }
+}

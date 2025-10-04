@@ -11,7 +11,7 @@ return {
           "goimports",
           "golines",
           "nixfmt",
-          "rust-analyzer",
+          "rustfmt",
         },
       })
     end,
@@ -91,6 +91,38 @@ return {
             staticcheck = true,
           },
         },
+        on_attach = function(client, bufnr)
+          if vim.lsp.inlay_hint then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          end
+        end,
+      })
+
+      lspconfig.rust_analyzer.setup({
+        capabilities = capabilities,
+        settings = {
+          ["rust-analyzer"] = {
+            imports = {
+              granularity = {
+                group = "module",
+              },
+              prefix = "self",
+            },
+            cargo = {
+              buildScripts = {
+                enable = true,
+              },
+            },
+            procMacro = {
+              enable = true,
+            },
+          },
+        },
+        on_attach = function(client, bufnr)
+          if vim.lsp.inlay_hint then
+            vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+          end
+        end,
       })
     end,
   },

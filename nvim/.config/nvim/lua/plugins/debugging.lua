@@ -11,7 +11,22 @@ return {
       local dap, dapui = require("dap"), require("dapui")
 
       require("dapui").setup()
-      require("dap-python").setup("python")
+
+      local function setup_python_dap()
+        local venv = require("venv-selector")
+        local python_path = venv.python()
+        if python_path then
+          require("dap-python").setup(python_path)
+        else
+          require("dap-python").setup("python")
+        end
+      end
+
+      vim.api.nvim_create_autocmd("VimEnter", {
+        pattern = "*",
+        callback = setup_python_dap,
+      })
+
       require("dap-go").setup()
 
       dap.listeners.before.attach.dapui_config = function()

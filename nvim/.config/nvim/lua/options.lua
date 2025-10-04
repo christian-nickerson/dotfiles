@@ -15,6 +15,14 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.termguicolors = true
 vim.opt.autoread = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.scrolloff = 8
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
+vim.opt.swapfile = false
+vim.opt.backup = false
 
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
   command = "if mode() != 'c' | checktime | endif",
@@ -23,5 +31,5 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
 
 vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
 vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
-vim.keymap.set("n", "<c-h>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")

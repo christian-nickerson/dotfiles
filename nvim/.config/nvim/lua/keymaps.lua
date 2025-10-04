@@ -147,6 +147,14 @@ wk.add({
     { "<leader>cg", "<cmd>lua vim.lsp.buf.definition()<cr>", desc = "Code: Go to definition", mode = { "n", "v" } },
     { "<leader>ch", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Code: hover", mode = { "n", "v" } },
     {
+      "<leader>cr",
+      function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+      end,
+      expr = true,
+      desc = "Code: rename",
+    },
+    {
       "<Leader>cc",
       "<cmd>lua require('neogen').generate()<cr>",
       noremap = true,
@@ -163,6 +171,8 @@ wk.add({
       "<cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<cr>",
       desc = "Code: Toggle diagnostics",
     },
+    { "<leader>cs", "<cmd>Trouble symbols toggle focus=false<cr>", desc = "Code: symbols" },
+    { "<leader>cl", "<cmd>Trouble lsp toggle focus=false win.position=right<cr>", desc = "Code: LSP info" },
   },
 })
 
@@ -267,6 +277,18 @@ wk.add({
   },
 })
 
+-- trouble (diagnostics)
+wk.add({
+  {
+    mode = { "n" },
+    { "<leader>x", group = "Trouble", icon = "🔧", nowait = true, remap = false },
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "Trouble: diagnostics" },
+    { "<leader>xX", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "Trouble: buffer diagnostics" },
+    { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Trouble: location list" },
+    { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Trouble: quickfix list" },
+  },
+})
+
 -- opencode
 wk.add({
   {
@@ -338,7 +360,6 @@ wk.add({
       desc = "Select prompt",
       mode = { "n", "v" },
     },
-    -- Example: keymap for custom prompt
     {
       "<leader>oe",
       function()

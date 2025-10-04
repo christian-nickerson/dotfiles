@@ -1,11 +1,11 @@
 ---
 # List of ticker symbols to start app with
 symbols:
-- SPY
-- ^FTSE
-- NVDA
-- AAPL
-- DOW
+  - SPY
+  - ^FTSE
+  - NVDA
+  - AAPL
+  - DOW
 
 # Chart type to start app with
 # Default is line
@@ -44,7 +44,6 @@ summary: false
 
 # Truncate pre market graphing to only 30 minutes prior to markets opening
 trunc_pre: false
-
 # Ticker options for Kagi charts
 #
 # A map of each ticker with reversal and/or price fields (both optional). If no

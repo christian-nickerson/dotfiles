@@ -5,7 +5,7 @@
     "theme": "system",
     "autoupdate": true,
 
-    // Keybinds 
+    // Keybinds
     "keybinds": {
         "leader": "ctrl+o",
     },

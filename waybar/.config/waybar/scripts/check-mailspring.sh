@@ -18,19 +18,15 @@ fi
 # Query for unread emails in the last 30 days
 UNREAD_COUNT=$(sqlite3 "$MAILSPRING_DB" "SELECT count(*) FROM Message WHERE unread = 1 AND date > strftime('%s', 'now', '-30 days');")
 
-# Default icon and class
-ICON="" # fa-envelope-o
-CLASS="read"
+# Default icon and tooltip
+ICON="" # fa-envelope-o
 TOOLTIP="No new mail"
 
-# If there are unread emails, change the icon, class and tooltip
+# If there are unread emails, change the icon and tooltip
 if [ "$UNREAD_COUNT" -gt 0 ]; then
-  ICON="" # fa-envelope
-  CLASS="unread"
+  ICON="" # fa-envelope
   TOOLTIP="$UNREAD_COUNT unread message(s)"
 fi
 
 # Output in JSON format for Waybar
 printf '{"text": "%s", "tooltip": "%s"}\n' "$ICON" "$TOOLTIP"
-
-

@@ -1,0 +1,31 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: mixed-line-ending
+      - id: check-added-large-files
+
+  - repo: https://github.com/shellcheck-py/shellcheck-py
+    rev: v0.10.0.1
+    hooks:
+      - id: shellcheck
+        exclude: ^p10k/\.p10k\.zsh$
+
+  - repo: https://github.com/JohnnyMorganz/StyLua
+    rev: v0.20.0
+    hooks:
+      - id: stylua
+        args: ["--config-path", "nvim/.config/nvim/.stylua.toml"]
+        files: ^nvim/.*\.lua$
+
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v4.0.0-alpha.8
+    hooks:
+      - id: prettier
+        types_or: [json, yaml, markdown]
+        exclude: ^nvim/.*/lazy-lock\.json$

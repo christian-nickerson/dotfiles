@@ -2,8 +2,8 @@
     "$schema": "https://opencode.ai/config.json",
 
     // Theme configuration
-    "theme": "system",
-    "autoupdate": true,
+    "theme": "catppuccin",
+    "autoupdate": false,
 
     // Keybinds
     "keybinds": {

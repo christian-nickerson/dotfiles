@@ -61,7 +61,7 @@
             "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected:\n\n{device_enumerate}",
             "tooltip-format-enumerate-connected": "{device_alias}",
             "tooltip-format-enumerate-connected-battery": "{device_alias}\t({device_battery_percentage}%)",
-            "on-click": "blueman-manager",
+            "on-click": "blueman-manager"
         },
 
         "battery": {
@@ -82,7 +82,7 @@
                 "󰂀",
                 "󰂂",
                 "󰁹"
-            ],
+            ]
         },
 
         "custom/expand": {
@@ -95,18 +95,14 @@
             "tooltip": false
         },
 
-        "custom/mail": {
-            "exec": "bash ~/.config/waybar/scripts/check-mailspring.sh",
-            "return-type": "json",
-            "format": "{text}",
-            "format-icons": {
-                "read": "",
-                "unread": "",
-            },
-            "tooltip": true,
-            "interval": 60,
-            "on-click": "mailspring"
-        },
+	"custom/mail": {
+		"exec": "/home/christian/.config/waybar/scripts/check-thunderbird.sh",
+		"return-type": "json",
+		"format": "{}",
+		"tooltip": true,
+		"interval": 60,
+		"on-click": "thunderbird"
+	},
 
         "group/expand": {
             "orientation": "horizontal",
@@ -115,7 +111,7 @@
                 "transition-left-to-right": false,
                 "click-to-reveal": true
             },
-            "modules": ["custom/expand","custom/endpoint","memory","cpu","temperature"],
+            "modules": ["custom/expand","custom/endpoint","memory","cpu","temperature"]
         },
 
         "cpu": {

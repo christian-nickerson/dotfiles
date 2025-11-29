@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Path to the Mailspring database
 MAILSPRING_DB="$HOME/.config/Mailspring/edgehill.db"

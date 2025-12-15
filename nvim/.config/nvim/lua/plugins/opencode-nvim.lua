@@ -1,15 +1,21 @@
 return {
   "NickvanDyke/opencode.nvim",
   dependencies = {
-    { "folke/snacks.nvim", opts = { input = { enabled = true } } },
+    { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
   },
-  ---@type opencode.Opts
-  opts = {
-    terminal = {
-      win = {
-        position = "float",
-        enter = true,
+  config = function()
+    ---@type opencode.Opts
+    vim.g.opencode_opts = {
+      provider = {
+        snacks = {
+          win = {
+            position = "float",
+            enter = true,
+            border = true,
+          },
+        },
       },
-    },
-  },
+    }
+    vim.o.autoread = true
+  end,
 }

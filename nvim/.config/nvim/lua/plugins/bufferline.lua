@@ -22,7 +22,7 @@ return {
           },
         },
       },
-      highlights = require("catppuccin.groups.integrations.bufferline").get_theme({
+      highlights = require("catppuccin.special.bufferline").get_theme({
         custom = {
           all = {
             fill = { bg = "#181926" }, -- crust - darker than tmux status bar

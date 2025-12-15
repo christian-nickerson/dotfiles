@@ -39,11 +39,12 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({ capabilities = capabilities })
+      -- lua_ls
+      vim.lsp.config("lua_ls", { capabilities = capabilities })
 
-      lspconfig.pyright.setup({
+      -- pyright
+      vim.lsp.config("pyright", {
         capabilities = capabilities,
         settings = {
           pyright = {
@@ -57,17 +58,16 @@ return {
         },
       })
 
-      lspconfig.ruff.setup({
+      -- ruff
+      vim.lsp.config("ruff", {
         capabilities = capabilities,
         trace = "messages",
-
-        on_attach = function(client, buffer)
+        on_attach = function(client, bufnr)
           if client.name == "ruff" then
             client.server_capabilities.documentFormattingProvider = false
             client.server_capabilities.hoverProvider = true
           end
         end,
-
         init_options = {
           settings = {
             logLevel = "debug",
@@ -76,11 +76,12 @@ return {
         },
       })
 
-      lspconfig.gopls.setup({
+      -- gopls
+      vim.lsp.config("gopls", {
         capabilities = capabilities,
         cmd = { "gopls" },
         filetypes = { "go", "gomod", "gotmpl", "gowork" },
-        root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+        root_markers = { "go.work", "go.mod", ".git" },
         settings = {
           gopls = {
             completeUnimported = true,
@@ -98,7 +99,8 @@ return {
         end,
       })
 
-      lspconfig.rust_analyzer.setup({
+      -- rust_analyzer
+      vim.lsp.config("rust_analyzer", {
         capabilities = capabilities,
         settings = {
           ["rust-analyzer"] = {
@@ -124,6 +126,13 @@ return {
           end
         end,
       })
+
+      -- Enable all configured servers
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("ruff")
+      vim.lsp.enable("gopls")
+      vim.lsp.enable("rust_analyzer")
     end,
   },
 

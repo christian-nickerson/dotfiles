@@ -15,6 +15,7 @@ return {
 
         require("neotest-python")({
           dap = { justMyCode = false },
+          args = { "--rootdir=.", "-c", "pyproject.toml" },
         }),
 
         require("neotest-golang")({

@@ -64,7 +64,7 @@ return {
         trace = "messages",
         on_attach = function(client, bufnr)
           if client.name == "ruff" then
-            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentFormattingProvider = true
             client.server_capabilities.hoverProvider = true
           end
         end,

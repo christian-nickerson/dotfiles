@@ -6,7 +6,6 @@ return {
       require("mason").setup({
         ensure_installed = {
           "stylua",
-          "black",
           "mypy",
           "goimports",
           "golines",
@@ -61,19 +60,33 @@ return {
       -- ruff
       vim.lsp.config("ruff", {
         capabilities = capabilities,
-        trace = "messages",
-        on_attach = function(client, bufnr)
-          if client.name == "ruff" then
-            client.server_capabilities.documentFormattingProvider = true
-            client.server_capabilities.hoverProvider = true
-          end
-        end,
         init_options = {
           settings = {
             logLevel = "debug",
-            fix = true,
           },
         },
+      })
+
+      -- Format on save for ruff (Python files)
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client and client.name == "ruff" then
+            -- Enable formatting capability
+            client.server_capabilities.hoverProvider = false -- Let pyright handle hover
+            vim.api.nvim_create_autocmd("BufWritePre", {
+              buffer = args.buf,
+              callback = function()
+                vim.lsp.buf.format({
+                  async = false,
+                  filter = function(c)
+                    return c.name == "ruff"
+                  end,
+                })
+              end,
+            })
+          end
+        end,
       })
 
       -- gopls

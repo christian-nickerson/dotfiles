@@ -9,7 +9,6 @@ return {
         -- lua
         null_ls.builtins.formatting.stylua,
         -- python
-        null_ls.builtins.formatting.ruff,
         null_ls.builtins.diagnostics.mypy,
         -- go
         null_ls.builtins.formatting.gofmt,

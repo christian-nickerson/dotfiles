@@ -1,14 +1,5 @@
 local wk = require("which-key")
 
--- tmux-navigator
-wk.add({
-  { "<c-h>", "<cmd>TmuxNavigateLeft<cr>", icon = "🔀", desc = "Navigate left" },
-  { "<c-j>", "<cmd>TmuxNavigateDown<cr>", icon = "🔀", desc = "Navigate down" },
-  { "<c-k>", "<cmd>TmuxNavigateUp<cr>", icon = "🔀", desc = "Navigate up" },
-  { "<c-l>", "<cmd>TmuxNavigateRight<cr>", icon = "🔀", desc = "Navigate right" },
-  { "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>", icon = "🔀", desc = "Navigate previous" },
-})
-
 -- which-key
 wk.add({
   {

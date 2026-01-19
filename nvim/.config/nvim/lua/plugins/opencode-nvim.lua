@@ -7,6 +7,7 @@ return {
     ---@type opencode.Opts
     vim.g.opencode_opts = {
       provider = {
+        enabled = "tmux",
         snacks = {
           win = {
             position = "float",

@@ -225,3 +225,9 @@ tooltip {
     padding: 0px 10px;
     transition: all .3s ease;
 }
+
+#custom-logout {
+    padding: 0px 10px;
+    transition: all .3s ease;
+    color: @text;
+}

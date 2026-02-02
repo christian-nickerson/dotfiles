@@ -2,9 +2,17 @@
         "layer": "top",
         "position": "top",
         "reload_style_on_change": true,
-        "modules-left": ["custom/mail", "group/expand"],
+        "modules-left": ["custom/logout", "group/expand"],
         "modules-center": ["hyprland/workspaces"],
-        "modules-right": ["pulseaudio","bluetooth","network","battery","clock","custom/notification"],
+        "modules-right": [
+            "custom/mail",
+            "pulseaudio",
+            "bluetooth",
+            "network",
+            "battery",
+            "clock",
+            "custom/notification"
+        ],
 
         "hyprland/workspaces": {
             "format": "{icon}",
@@ -95,14 +103,14 @@
             "tooltip": false
         },
 
-	"custom/mail": {
-		"exec": "/home/christian/.config/waybar/scripts/check-thunderbird.sh",
-		"return-type": "json",
-		"format": "{}",
-		"tooltip": true,
-		"interval": 60,
-		"on-click": "thunderbird"
-	},
+        "custom/mail": {
+            "exec": "/home/christian/.config/waybar/scripts/check-thunderbird.sh",
+            "return-type": "json",
+            "format": "{}",
+            "tooltip": true,
+            "interval": 60,
+            "on-click": "thunderbird"
+        },
 
         "group/expand": {
             "orientation": "horizontal",
@@ -154,5 +162,12 @@
             "scroll-step": 1,
             "on-click": "pavucontrol",
             "ignored-sinks": ["Easy Effects Sink"]
+        },
+
+        "custom/logout": {
+            "tooltip": false,
+            "format": "",
+            "on-click": "wlogout",
+            "escape": true
         }
 }

@@ -13,10 +13,10 @@ resolution=$(hyprctl monitors -j 2>/dev/null | jq -r '.[0] | "\(.width)x\(.heigh
 
 case "$resolution" in
     3840x1600|3440x1440) # Ultrawide
-        margins="-L 600 -R 600 -T 550 -B 550"
+        margins="-L 800 -R 800 -T 550 -B 550"
         ;;
     3840x1200) # Ultrawide shorter
-        margins="-L 600 -R 600 -T 300 -B 300"
+        margins="-L 800 -R 800 -T 400 -B 400"
         ;;
     3840x2160) # 4K
         margins="-L 800 -R 800 -T 900 -B 900"
@@ -32,4 +32,4 @@ case "$resolution" in
         ;;
 esac
 
-wlogout -b 6 -c 6 -r 1 "$margins" -l "$CONFIG_DIR/layout"
+wlogout -b 6 -r 1 "$margins" -l "$CONFIG_DIR/layout"

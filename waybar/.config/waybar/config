@@ -167,7 +167,7 @@
         "custom/logout": {
             "tooltip": false,
             "format": "",
-            "on-click": "wlogout",
+            "on-click": "~/.config/wlogout/scripts/wlogout.sh",
             "escape": true
         }
 }

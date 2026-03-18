@@ -1,5 +1,6 @@
 {
     "$schema": "https://opencode.ai/config.json",
+
     "plugin": [
         "opencode-anthropic-auth@latest"
     ],
@@ -26,6 +27,16 @@
         },
         "enabled": true
       }
+    },
+
+    // Providers
+    "provider": {
+        "amazon-bedrock": {
+            "options": {
+                "region": "eu-west-2",
+                "profile": "bedrock"
+            }
+        }
     },
 
     "mode": {

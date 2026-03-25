@@ -12,6 +12,7 @@ return {
       flavour = "macchiato",
       transparent_background = false,
       integrations = {
+        render_markdown = true,
         treesitter = true,
         treesitter_context = true,
       },

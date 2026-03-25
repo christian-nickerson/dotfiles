@@ -3,7 +3,12 @@ return {
   event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
-    "rcarriga/nvim-notify",
+    {
+      "rcarriga/nvim-notify",
+      opts = {
+        background_colour = "#24273a",
+      },
+    },
   },
   config = function()
     require("noice").setup({

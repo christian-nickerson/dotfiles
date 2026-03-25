@@ -280,6 +280,18 @@ wk.add({
   },
 })
 
+-- markdown
+wk.add({
+  {
+    mode = { "n" },
+    { "<leader>m", group = "Markdown", icon = "📝", nowait = true, remap = false },
+    { "<leader>mt", "<cmd>RenderMarkdown toggle<cr>", desc = "Markdown: toggle render" },
+    { "<leader>me", "<cmd>RenderMarkdown expand<cr>", desc = "Markdown: expand level" },
+    { "<leader>mc", "<cmd>RenderMarkdown contract<cr>", desc = "Markdown: contract level" },
+    { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Markdown: browser preview" },
+  },
+})
+
 -- opencode
 wk.add({
   {

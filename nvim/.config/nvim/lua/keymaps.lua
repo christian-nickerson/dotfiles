@@ -292,6 +292,21 @@ wk.add({
   },
 })
 
+-- latex (vimtex)
+wk.add({
+  {
+    mode = { "n" },
+    { "<leader>p", group = "Paper (LaTeX)", icon = "📄", nowait = true, remap = false },
+    { "<leader>pc", "<cmd>VimtexCompile<cr>", desc = "LaTeX: start/stop continuous compile" },
+    { "<leader>ps", "<cmd>VimtexCompileSS<cr>", desc = "LaTeX: single-shot compile" },
+    { "<leader>pv", "<cmd>VimtexView<cr>", desc = "LaTeX: view PDF (forward search)" },
+    { "<leader>pe", "<cmd>VimtexErrors<cr>", desc = "LaTeX: show errors" },
+    { "<leader>pt", "<cmd>VimtexTocToggle<cr>", desc = "LaTeX: toggle table of contents" },
+    { "<leader>pk", "<cmd>VimtexClean<cr>", desc = "LaTeX: clean aux files" },
+    { "<leader>pi", "<cmd>VimtexInfo<cr>", desc = "LaTeX: project info" },
+  },
+})
+
 -- opencode
 wk.add({
   {

@@ -29,6 +29,7 @@ return {
           "gopls",
           "golangci_lint_ls",
           "dockerls",
+          "texlab",
         },
       })
     end,
@@ -140,12 +141,49 @@ return {
         end,
       })
 
+      -- texlab
+      local texlab_forward_search = {}
+      if vim.fn.has("mac") == 1 then
+        texlab_forward_search = {
+          executable = "/Applications/Skim.app/Contents/SharedSupport/displayline",
+          args = { "%l", "%p", "%f" },
+        }
+      else
+        texlab_forward_search = {
+          executable = "zathura",
+          args = { "--synctex-forward", "%l:1:%f", "%p" },
+        }
+      end
+
+      vim.lsp.config("texlab", {
+        capabilities = capabilities,
+        settings = {
+          texlab = {
+            build = {
+              executable = "tectonic",
+              args = { "-X", "compile", "%f", "--synctex", "--keep-logs", "--keep-intermediates" },
+              onSave = true,
+              forwardSearchAfter = false,
+            },
+            forwardSearch = texlab_forward_search,
+            chktex = {
+              onOpenAndSave = true,
+              onEdit = false,
+            },
+            diagnosticsDelay = 300,
+            latexFormatter = "latexindent",
+            bibtexFormatter = "texlab",
+          },
+        },
+      })
+
       -- Enable all configured servers
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pyright")
       vim.lsp.enable("ruff")
       vim.lsp.enable("gopls")
       vim.lsp.enable("rust_analyzer")
+      vim.lsp.enable("texlab")
     end,
   },
 

@@ -5,14 +5,7 @@
         "opencode-anthropic-auth@latest"
     ],
 
-    // Theme configuration
-    "theme": "catppuccin",
     "autoupdate": false,
-
-    // Keybinds
-    "keybinds": {
-        "leader": "ctrl+o",
-    },
 
     // Instructions
     "instructions": ["~/.config/opencode/context7.md"],

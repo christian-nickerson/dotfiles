@@ -1,0 +1,160 @@
+@use "macchiato" as *;
+@use "variables" as *;
+
+* {
+    font-size: $font-size;
+    font-family: $font-family;
+}
+
+window#waybar {
+    all: unset;
+}
+
+/* --- Layout Modules --- */
+/* Common properties for all module containers */
+.modules-left,
+.modules-center,
+.modules-right {
+    padding: $container-padding;
+    border-radius: $container-radius;
+    background: rgba($base, .6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+}
+
+/* Specific positioning for each container */
+.modules-left   { margin: $container-margin 0px 0px 16px; }
+.modules-center { margin: $container-margin 0px 0px 0px;  }
+.modules-right  { margin: $container-margin 16px 0px 0px; }
+
+tooltip {
+    background: $base;
+    color: $text;
+}
+
+/* --- Standard Modules --- */
+/* Grouping common spacing, transitions, and text colors */
+#clock, #custom-notification, #bluetooth, #custom-mail,
+#network, #pulseaudio, #battery, #cpu, #memory, #temperature,
+#tray, #tray menu *, #tray menu separator, #custom-logout {
+    padding: $module-padding;
+    transition: all $transition-speed ease;
+    color: $text;
+}
+
+/* --- Hover Effects --- */
+/* Base transitions are already handled by the standard modules block above */
+#clock:hover, #bluetooth:hover, #battery:hover {
+    color: $blue;
+}
+
+#custom-notification:hover, #custom-mail:hover {
+    color: $lavender;
+}
+
+#network:hover {
+    color: $green;
+}
+
+#memory:hover {
+    color: $teal;
+}
+
+#cpu:hover {
+    color: $peach;
+}
+
+#temperature:hover {
+    color: $red;
+}
+
+/* --- Workspaces --- */
+#workspaces {
+    padding: $workspace-outer-padding;
+}
+
+#workspaces button {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: $workspace-padding;
+    color: rgba($blue, .4);
+    transition: all .2s ease;
+}
+
+#workspaces button:hover {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.active {
+    color: $sapphire;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+    color: rgba(0, 0, 0, 0);
+    border: none;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: $sapphire;
+    border: none;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+/* --- Battery Specific States --- */
+#battery.charging {
+    color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+/* --- Other Custom Modules (Non-standard spacing) --- */
+#group-expand {
+    padding: 0px 4px;
+    transition: all $transition-speed ease;
+}
+
+#custom-expand {
+    padding: 0px 4px;
+    color: $text;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
+    transition: all $transition-speed ease;
+}
+
+#custom-expand:hover {
+    color: rgba(255, 255, 255, .2);
+    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+}
+
+#custom-colorpicker {
+    padding: 0px 8px;
+}
+
+#custom-endpoint {
+    padding: 0px 4px;
+    color: $text;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
+}

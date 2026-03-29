@@ -1,233 +1,167 @@
-@import "macchiato.css";
-
 * {
-    font-size:12px;
-    font-family: "0xProto Nerd Font";
+  font-size: 12px;
+  font-family: "0xProto Nerd Font";
 }
 
-window#waybar{
-    all:unset;
+window#waybar {
+  all: unset;
 }
 
+/* --- Layout Modules --- */
+/* Common properties for all module containers */
+.modules-left,
+.modules-center,
+.modules-right {
+  padding: 4px 6px;
+  border-radius: 10px;
+  background: rgba(36, 39, 58, 0.6);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
+}
+
+/* Specific positioning for each container */
 .modules-left {
-    padding:7px;
-    margin:8px 0px 0px 16px;
-    border-radius:10px;
-    background: alpha(@base,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+  margin: 8px 0px 0px 16px;
 }
 
 .modules-center {
-    padding:7px;
-    margin:8px 0px 0px 0px;
-    border-radius:10px;
-    background: alpha(@base,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+  margin: 8px 0px 0px 0px;
 }
 
 .modules-right {
-    padding:7px;
-    margin: 8px 16px 0px 0px;
-    border-radius:10px;
-    background: alpha(@base,.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+  margin: 8px 16px 0px 0px;
 }
 
 tooltip {
-    background:@base;
-    color: @text;
+  background: #24273a;
+  color: #cad3f5;
 }
 
-#clock:hover, #custom-notification:hover,#bluetooth:hover,#battery:hover{
-    transition: all .3s ease;
-    color:@blue;
+/* --- Standard Modules --- */
+/* Grouping common spacing, transitions, and text colors */
+#clock, #custom-notification, #bluetooth, #custom-mail,
+#network, #pulseaudio, #battery, #cpu, #memory, #temperature,
+#tray, #tray menu *, #tray menu separator, #custom-logout {
+  padding: 0px 10px;
+  transition: all 0.3s ease;
+  color: #cad3f5;
 }
 
-#custom-notification:hover{
-    transition: all .3s ease;
-    color:@lavendar;
+/* --- Hover Effects --- */
+/* Base transitions are already handled by the standard modules block above */
+#clock:hover, #bluetooth:hover, #battery:hover {
+  color: #8aadf4;
 }
 
-#network:hover{
-    transition: all .3s ease;
-    color:@green;
+#custom-notification:hover, #custom-mail:hover {
+  color: #b7bdf8;
 }
 
-#memory:hover{
-    transition: all .3s ease;
-    color:@teal;
+#network:hover {
+  color: #a6da95;
 }
 
-#cpu:hover{
-    transition: all .3s ease;
-    color:@peach;
+#memory:hover {
+  color: #8bd5ca;
 }
 
-#temperature:hover{
-    transition: all .3s ease;
-    color:@red;
+#cpu:hover {
+  color: #f5a97f;
 }
 
-#custom-mail:hover{
-    transition: all .3s ease;
-    color:@lavender;
+#temperature:hover {
+  color: #ed8796;
 }
 
-
-#custom-notification {
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-}
-
-#clock{
-    padding: 0px 8px;
-    color:@text;
-    transition: all .3s ease;
-}
-
+/* --- Workspaces --- */
 #workspaces {
-    padding: 0px 8px;
+  padding: 0px 6px;
 }
 
 #workspaces button {
-    all:unset;
-    padding: 0px 5px;
-    color: alpha(@blue,.4);
-    transition: all .2s ease;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0px 2px;
+  color: rgba(138, 173, 244, 0.4);
+  transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    color:rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
+  transition: all 1s ease;
 }
 
 #workspaces button.active {
-    color: @sapphire;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+  color: #7dc4e4;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
 #workspaces button.empty {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.empty:hover {
-    color: rgba(0,0,0,0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
-    transition: all 1s ease;
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
+  transition: all 1s ease;
 }
 
 #workspaces button.empty.active {
-    color: @sapphire;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+  color: #7dc4e4;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
 
-#bluetooth{
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-
-}
-
-#custom-mail {
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color: @text;
-}
-
-#network{
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-}
-
-#pulseaudio{
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-}
-
-#battery{
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-}
-
+/* --- Battery Specific States --- */
 #battery.charging {
-    color: #26A65B;
+  color: #26A65B;
 }
 
 #battery.warning:not(.charging) {
-    color: #ffbe61;
+  color: #ffbe61;
 }
 
 #battery.critical:not(.charging) {
-    color: #f53c3c;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  color: #f53c3c;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
-#group-expand{
-    padding: 0px 4px;
-    transition: all .3s ease;
+/* --- Other Custom Modules (Non-standard spacing) --- */
+#group-expand {
+  padding: 0px 4px;
+  transition: all 0.3s ease;
 }
 
-#custom-expand{
-    padding: 0px 4px;
-    color:@text;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
-    transition: all .3s ease;
+#custom-expand {
+  padding: 0px 4px;
+  color: #cad3f5;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
 }
 
-#custom-expand:hover{
-    color:rgba(255,255,255,.2);
-    text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
+#custom-expand:hover {
+  color: rgba(255, 255, 255, 0.2);
+  text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5);
 }
 
-#custom-colorpicker{
-    padding: 0px 10px;
+#custom-colorpicker {
+  padding: 0px 8px;
 }
 
-#cpu,#memory,#temperature{
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color:@text;
-
+#custom-endpoint {
+  padding: 0px 4px;
+  color: #cad3f5;
+  text-shadow: 0px 0px 1.5px rgb(0, 0, 0);
 }
 
-#custom-endpoint{
-    color:@text;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 1);
-}
-
-#tray{
-    padding: 0px 8px;
-    transition: all .3s ease;
-
-}
-
-#tray menu * {
-    padding: 0px 8px;
-    transition: all .3s ease;
-}
-
-#tray menu separator {
-    padding: 0px 8px;
-    transition: all .3s ease;
-}
-
-#custom-logout {
-    padding: 0px 8px;
-    transition: all .3s ease;
-    color: @text;
-}
+/*# sourceMappingURL=style.css.map */

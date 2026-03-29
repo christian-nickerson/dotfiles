@@ -1,0 +1,14 @@
+// Layout Spacing
+$container-margin: 8px;               // Distance from edge of screen
+$container-padding: 4px 6px;          // Internal padding of the three big boxes
+$container-radius: 10px;              // Rounding of the three big boxes
+
+// Module Spacing
+$module-padding: 0px 10px;             // Controls horizontal spacing between left/right icons
+$workspace-outer-padding: 0px 6px;    // Controls padding of the center workspace box
+$workspace-padding: 0px 2px;          // Controls horizontal spacing between workspace circles
+
+// Other Defaults
+$transition-speed: .3s;
+$font-family: "0xProto Nerd Font";
+$font-size: 12px;

@@ -1,5 +1,5 @@
 theme = catppuccin-macchiato.conf
-font-size = 10
+font-size = 9
 gtk-titlebar = false
-background-opacity = 0.9
-background-blur-radius = 20
+background-opacity = 0.75
+background-blur-radius = 15

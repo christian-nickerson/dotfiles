@@ -4,7 +4,11 @@ return {
     "nvim-neotest/nvim-nio",
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
-    "nvim-treesitter/nvim-treesitter",
+    {
+      "nvim-treesitter/nvim-treesitter",
+      branch = "main",
+      build = ":TSUpdate go",
+    },
     "nvim-neotest/neotest-python",
     "fredrikaverpil/neotest-golang",
   },
@@ -19,9 +23,7 @@ return {
         }),
 
         require("neotest-golang")({
-          dap = { justMyCode = false },
-          args = { "-v" },
-          runner = "go test",
+          go_test_args = { "-v", "-race", "-count=1" },
         }),
       },
     })

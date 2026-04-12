@@ -90,6 +90,14 @@ return {
         end,
       })
 
+      -- templ
+      vim.lsp.config("templ", {
+        capabilities = capabilities,
+        cmd = { "templ", "lsp" },
+        filetypes = { "templ" },
+        root_markers = { "go.mod", ".git" },
+      })
+
       -- gopls
       vim.lsp.config("gopls", {
         capabilities = capabilities,
@@ -181,6 +189,7 @@ return {
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pyright")
       vim.lsp.enable("ruff")
+      vim.lsp.enable("templ")
       vim.lsp.enable("gopls")
       vim.lsp.enable("rust_analyzer")
       vim.lsp.enable("texlab")

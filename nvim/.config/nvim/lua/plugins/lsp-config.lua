@@ -149,6 +149,16 @@ return {
         end,
       })
 
+      -- tflint
+      vim.lsp.config("tflint", {
+        capabilities = capabilities,
+      })
+
+      -- terraformls
+      vim.lsp.config("terraformls", {
+        capabilities = capabilities,
+      })
+
       -- texlab
       local texlab_forward_search = {}
       if vim.fn.has("mac") == 1 then
@@ -193,6 +203,8 @@ return {
       vim.lsp.enable("gopls")
       vim.lsp.enable("rust_analyzer")
       vim.lsp.enable("texlab")
+      vim.lsp.enable("tflint")
+      vim.lsp.enable("terraformls")
     end,
   },
 

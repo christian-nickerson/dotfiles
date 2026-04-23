@@ -33,10 +33,58 @@ wk.add({
     { "<leader>ff", "<cmd>lua require('telescope.builtin').find_files()<cr>", desc = "Find: files" },
     { "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", desc = "Find: grep" },
     {
+      "<leader>fr",
+      function()
+        require("grug-far").open({
+          prefills = {
+            paths = vim.fn.expand("%"),
+            search = vim.fn.expand("<cword>"),
+          },
+        })
+      end,
+      desc = "Find: replace in file",
+    },
+    {
+      "<leader>fR",
+      function()
+        require("grug-far").open({
+          prefills = {
+            search = vim.fn.expand("<cword>"),
+          },
+        })
+      end,
+      desc = "Find: replace in project",
+    },
+    {
       "<leader>fs",
       "<cmd>lua require('auto-session.session-lens').search_session<cr>",
       noremap = true,
       desc = "Find sessions",
+    },
+  },
+})
+
+wk.add({
+  {
+    mode = { "v" },
+    { "<leader>f", group = "Find", icon = "🔍", nowait = true, remap = false },
+    {
+      "<leader>fr",
+      function()
+        require("grug-far").with_visual_selection({
+          prefills = {
+            paths = vim.fn.expand("%"),
+          },
+        })
+      end,
+      desc = "Find: replace in file",
+    },
+    {
+      "<leader>fR",
+      function()
+        require("grug-far").with_visual_selection()
+      end,
+      desc = "Find: replace in project",
     },
   },
 })

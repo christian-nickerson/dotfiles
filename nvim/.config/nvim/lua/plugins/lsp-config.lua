@@ -6,7 +6,6 @@ return {
       require("mason").setup({
         ensure_installed = {
           "stylua",
-          "mypy",
           "goimports",
           "golines",
           "nixfmt",
@@ -26,6 +25,7 @@ return {
           "lua_ls",
           "pyright",
           "ruff",
+          "ty",
           "gopls",
           "golangci_lint_ls",
           "dockerls",
@@ -54,6 +54,16 @@ return {
             analysis = {
               ignore = { "*" },
             },
+          },
+        },
+      })
+
+      -- ty
+      vim.lsp.config("ty", {
+        capabilities = capabilities,
+        settings = {
+          ty = {
+            diagnosticMode = "workspace",
           },
         },
       })
@@ -199,6 +209,7 @@ return {
       vim.lsp.enable("lua_ls")
       vim.lsp.enable("pyright")
       vim.lsp.enable("ruff")
+      vim.lsp.enable("ty")
       vim.lsp.enable("templ")
       vim.lsp.enable("gopls")
       vim.lsp.enable("rust_analyzer")

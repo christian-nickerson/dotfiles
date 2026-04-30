@@ -17,7 +17,7 @@ repos:
         exclude: ^p10k/\.p10k\.zsh$
 
   - repo: https://github.com/JohnnyMorganz/StyLua
-    rev: v2.4.0
+    rev: v2.4.1
     hooks:
       - id: stylua
         args: ["--config-path", "nvim/.config/nvim/.stylua.toml"]

@@ -1,16 +1,11 @@
 {
     "$schema": "https://opencode.ai/config.json",
-
-    "plugin": [
-        "opencode-anthropic-auth@latest"
-    ],
-
     "autoupdate": false,
 
     // Instructions
     "instructions": ["~/.config/opencode/context7.md"],
 
-    // MCP Servers
+    // MCP & Skills
     "mcp": {
       "context7": {
         "type": "remote",
@@ -21,6 +16,9 @@
         "enabled": true
       }
     },
+    "skills": {
+        "paths": ["~/.config/opencode/skills"]
+    }
 
     // Providers
     "provider": {
@@ -31,14 +29,4 @@
             }
         }
     },
-
-    "mode": {
-      "build": {
-        "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
-      },
-      "plan": {
-        "prompt": "You are Claude Code, Anthropic's official CLI for Claude."
-      }
-    }
-
 }

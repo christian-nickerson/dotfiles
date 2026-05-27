@@ -18,7 +18,7 @@
     },
     "skills": {
         "paths": ["~/.config/opencode/skills"]
-    }
+    },
 
     // Providers
     "provider": {

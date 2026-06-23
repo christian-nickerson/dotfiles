@@ -3,3 +3,6 @@ font-size = 9
 gtk-titlebar = false
 background-opacity = 0.75
 background-blur-radius = 15
+clipboard-write = allow
+clipboard-read = allow
+clipboard-paste-protection = false

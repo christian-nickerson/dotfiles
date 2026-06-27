@@ -14,7 +14,9 @@ repos:
     rev: v0.11.0.1
     hooks:
       - id: shellcheck
-        exclude: ^p10k/\.p10k\.zsh$
+        # zsh files (p10k config, .zshrc) use zsh-only syntax that shellcheck
+        # (a bash/POSIX linter) cannot parse.
+        exclude: ^(p10k/\.p10k\.zsh|zsh/\.zshrc)$
 
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v2.4.1

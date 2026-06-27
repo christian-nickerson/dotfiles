@@ -19,4 +19,7 @@ Thumbs.db
 *.tmp
 *.log
 
+# Waybar dynamic config
+waybar/.config/waybar/config
+
 lazygit/*/*/*/state.yml

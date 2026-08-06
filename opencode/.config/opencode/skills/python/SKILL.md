@@ -23,6 +23,7 @@ Combine with other skills, like `api`, when planning or building those type of a
 
 - Use an src layout.
   - For runtime applications (target is not a package):
+
   ```
   src/
       module1/
@@ -35,6 +36,7 @@ Combine with other skills, like `api`, when planning or building those type of a
   ```
 
   - For packages, follow the standard src layout.
+
 - Modules should be self-contained where possible, not relying on other modules unless avoiding significant duplication.
 - Modules should have a well-defined interface, making the code in `main.py` easy to read.
 - `main.py` performs orchestration, runtime management, and IO — it should not contain module logic.

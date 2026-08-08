@@ -11,10 +11,9 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 hl.bind(mainMod .. " + space", hl.dsp.exec_cmd(programs.menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
--- NOTE: keys resolve case-insensitively, so this collides with the "move focus
--- down" bind below and both dispatchers fire on SUPER+J. Carried over verbatim
--- from the hyprlang config; rebind one of them if that is not intended.
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+-- "O" for orientation. Deliberately not SUPER+J: keys resolve case-insensitively,
+-- so that would collide with the "move focus down" bind below and fire both.
+hl.bind(mainMod .. " + O", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + backspace", hl.dsp.exec_cmd("loginctl lock-session"))
 hl.bind(mainMod .. " + TAB", hl.dsp.focus({ workspace = "e+1" }))
 

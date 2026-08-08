@@ -23,7 +23,10 @@ repos:
     hooks:
       - id: stylua
         args: ["--config-path", "nvim/.config/nvim/.stylua.toml"]
-        files: ^nvim/.*\.lua$
+        files: ^(nvim|hyprland)/.*\.lua$
+        # Vendored upstream from catppuccin/hyprland; left unformatted so it
+        # diffs cleanly against new releases.
+        exclude: ^hyprland/.*/themes/
 
   - repo: https://github.com/pre-commit/mirrors-prettier
     rev: v4.0.0-alpha.8

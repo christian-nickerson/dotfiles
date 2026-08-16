@@ -4,6 +4,7 @@ repos:
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
+        exclude: \.map$
       - id: check-yaml
       - id: check-toml
       - id: check-json
@@ -21,7 +22,7 @@ repos:
   - repo: https://github.com/JohnnyMorganz/StyLua
     rev: v2.4.1
     hooks:
-      - id: stylua
+      - id: stylua-system
         args: ["--config-path", "nvim/.config/nvim/.stylua.toml"]
         files: ^(nvim|hyprland)/.*\.lua$
         # Vendored upstream from catppuccin/hyprland; left unformatted so it

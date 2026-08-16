@@ -11,6 +11,11 @@ return {
   config = function()
     require("neo-tree").setup({
       filesystem = {
+        use_libuv_file_watcher = true,
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = false,
+        },
         filtered_items = {
           visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
           hide_dotfiles = false,
@@ -18,16 +23,6 @@ return {
           never_show = { ".git" },
         },
       },
-    })
-
-    vim.api.nvim_create_autocmd({ "BufLeave" }, {
-      pattern = { "*lazygit*" },
-      group = vim.api.nvim_create_augroup("git_refresh_neotree", { clear = true }),
-      callback = function()
-        require("neo-tree.sources.filesystem.commands").refresh(
-          require("neo-tree.sources.manager").get_state("filesystem")
-        )
-      end,
     })
   end,
 }

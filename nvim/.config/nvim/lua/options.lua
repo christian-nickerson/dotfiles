@@ -1,8 +1,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.g.lazyvim_python_lsp = "pyright"
-vim.g.lazyvim_python_ruff = "ruff"
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
 
 vim.opt.number = true
 vim.opt.relativenumber = false
@@ -36,6 +38,7 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.sessionoptions:append("localoptions")
 
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
   command = "if mode() != 'c' | checktime | endif",

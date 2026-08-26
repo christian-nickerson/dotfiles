@@ -1,24 +1,15 @@
 return {
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     lazy = false,
     config = function()
-      require("mason").setup({
-        ensure_installed = {
-          "stylua",
-          "goimports",
-          "golines",
-          "nixfmt",
-          "rustfmt",
-        },
-      })
+      require("mason").setup()
     end,
   },
 
   {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     lazy = false,
-    opts = { auto_install = true },
     config = function()
       require("mason-lspconfig").setup({
         ensure_installed = {
@@ -36,9 +27,68 @@ return {
   },
 
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "mason-org/mason.nvim" },
+    opts = {
+      -- nixfmt is intentionally excluded: mason's registry only ships a
+      -- linux_x64 asset for it. Install via `brew install nixfmt` instead.
+      ensure_installed = { "stylua", "hadolint", "goimports", "golines" },
+      run_on_start = true,
+      auto_update = false,
+    },
+  },
+
+  {
     "neovim/nvim-lspconfig",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local format_augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+
+      -- Single format-on-save handler for every LSP client.
+      -- Prefers null-ls (none-ls) when it offers formatting for the filetype,
+      -- otherwise falls back to any other capable client. Python is the one
+      -- carve-out: ruff owns formatting/imports, pyright owns hover only.
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = format_augroup,
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if not client then
+            return
+          end
+
+          if client.name == "ruff" then
+            client.server_capabilities.hoverProvider = false -- let pyright handle hover
+          end
+
+          if not client:supports_method("textDocument/formatting") then
+            return
+          end
+
+          vim.api.nvim_clear_autocmds({ group = format_augroup, buffer = args.buf })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            group = format_augroup,
+            buffer = args.buf,
+            callback = function()
+              vim.lsp.buf.format({
+                bufnr = args.buf,
+                async = false,
+                filter = function(c)
+                  if c.name == "pyright" then
+                    return false -- ruff owns Python formatting
+                  end
+                  local has_null_ls = vim.iter(vim.lsp.get_clients({ bufnr = args.buf })):any(function(nc)
+                    return nc.name == "null-ls"
+                  end)
+                  if has_null_ls then
+                    return c.name == "null-ls"
+                  end
+                  return true
+                end,
+              })
+            end,
+          })
+        end,
+      })
 
       -- lua_ls
       vim.lsp.config("lua_ls", { capabilities = capabilities })
@@ -76,28 +126,6 @@ return {
             logLevel = "debug",
           },
         },
-      })
-
-      -- Format on save for ruff (Python files)
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client and client.name == "ruff" then
-            -- Enable formatting capability
-            client.server_capabilities.hoverProvider = false -- Let pyright handle hover
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              buffer = args.buf,
-              callback = function()
-                vim.lsp.buf.format({
-                  async = false,
-                  filter = function(c)
-                    return c.name == "ruff"
-                  end,
-                })
-              end,
-            })
-          end
-        end,
       })
 
       -- templ
@@ -205,15 +233,11 @@ return {
         },
       })
 
-      -- Enable all configured servers
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("pyright")
-      vim.lsp.enable("ruff")
-      vim.lsp.enable("ty")
+      -- mason-lspconfig's automatic_enable (default true) already enables
+      -- every server in its ensure_installed list. Only enable the servers
+      -- managed outside mason here.
       vim.lsp.enable("templ")
-      vim.lsp.enable("gopls")
       vim.lsp.enable("rust_analyzer")
-      vim.lsp.enable("texlab")
       vim.lsp.enable("tflint")
       vim.lsp.enable("terraformls")
     end,

@@ -1,9 +1,11 @@
 return {
   "nvimtools/none-ls.nvim",
   config = function()
-    local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
     local null_ls = require("null-ls")
 
+    -- Format-on-save is handled centrally in lsp-config.lua's LspAttach
+    -- autocmd, which prefers null-ls when it has a formatter for the
+    -- filetype and falls back to other clients otherwise.
     null_ls.setup({
       sources = {
         -- lua
@@ -16,19 +18,6 @@ return {
         -- docker
         null_ls.builtins.diagnostics.hadolint,
       },
-
-      on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ async = false })
-            end,
-          })
-        end
-      end,
     })
   end,
 }

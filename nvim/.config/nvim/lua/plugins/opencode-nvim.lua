@@ -1,7 +1,7 @@
 return {
   "NickvanDyke/opencode.nvim",
   dependencies = {
-    { "folke/snacks.nvim", opts = { input = {}, picker = {}, terminal = {} } },
+    "folke/snacks.nvim",
   },
   config = function()
     local opencode_cmd = "opencode --port"

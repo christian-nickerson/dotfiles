@@ -24,13 +24,41 @@ return {
       "rst",
       "latex",
       "bibtex",
+      "regex",
+      "bash",
+      "html",
+      "yaml",
+      "markdown",
+      "markdown_inline",
+      "vim",
+      "vimdoc",
+      "query",
+      "diff",
     })
 
     -- Enable treesitter highlighting and indentation per filetype.
     -- In the main branch these are no longer auto-enabled; they must be
     -- wired up explicitly. Indentation is still marked experimental upstream.
     vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "lua", "python", "go", "templ", "ninja", "rst", "latex", "bibtex" },
+      pattern = {
+        "lua",
+        "python",
+        "go",
+        "templ",
+        "ninja",
+        "rst",
+        "latex",
+        "bibtex",
+        "regex",
+        "bash",
+        "html",
+        "yaml",
+        "markdown",
+        "vim",
+        "vimdoc",
+        "query",
+        "diff",
+      },
       callback = function()
         pcall(vim.treesitter.start)
         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

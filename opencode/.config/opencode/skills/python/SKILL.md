@@ -56,6 +56,7 @@ Combine with other skills, like `api`, when planning or building those type of a
 
 ## Docstrings and comments
 
+- Do not use module docstrings.
 - Use the Sphinx docstring format (no types in docstring — types live in annotations):
 
   ```python
@@ -70,7 +71,7 @@ Combine with other skills, like `api`, when planning or building those type of a
   ```
 
 - All functions, methods, and classes must have docstrings, updated when code changes.
-- Comments should be used sparingly (only when code is not self-documenting) and kept brief.
+- Code comments should be kept to a minimum.
 
 ## Configuration
 

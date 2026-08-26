@@ -109,6 +109,7 @@ func handleGetUser(logger *Logger, userStore UserStore) fiber.Handler {
 - Use `context.Context` throughout and respect cancellation.
 - Use generics where they reduce duplication across 2+ concrete types.
 - Full names for identifiers — no abbreviations beyond well-known Go conventions (`ctx`, `err`, `req`, `resp`).
+- Keep code comments to a minimum.
 
 ## Error handling
 

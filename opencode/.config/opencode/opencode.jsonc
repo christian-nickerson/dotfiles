@@ -3,7 +3,10 @@
     "autoupdate": false,
 
     // Instructions
-    "instructions": ["~/.config/opencode/context7.md"],
+    "instructions": [
+        "~/.config/opencode/instructions/style.md",
+        "~/.config/opencode/instructions/context7.md"
+    ],
 
     // MCP & Skills
     "mcp": {

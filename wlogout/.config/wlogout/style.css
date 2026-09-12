@@ -77,17 +77,17 @@ button:hover#suspend {
     margin: 10px 0px 10px 0px;
 }
 
-button:hover#shutdown {
-    border-radius: 48px;
-    margin: 10px 0px 10px 0px;
-}
-
 button:hover#hibernate {
     border-radius: 48px;
     margin: 10px 0px 10px 0px;
 }
 
 button:hover#reboot {
+    border-radius: 48px;
+    margin: 10px 0px 10px 0px;
+}
+
+button:hover#shutdown {
     border-radius: 48px;
     margin: 10px 50px 10px 0px;
 }
@@ -110,12 +110,6 @@ button:hover#reboot {
     margin: 50px 0px 50px 0px;
 }
 
-#shutdown {
-    background-image: url("/home/christian/.config/wlogout/icons/shutdown_white.png");
-    border-radius: 0px;
-    margin: 50px 0px 50px 0px;
-}
-
 #hibernate {
     background-image: url("/home/christian/.config/wlogout/icons/hibernate_white.png");
     border-radius: 0px;
@@ -124,6 +118,12 @@ button:hover#reboot {
 
 #reboot {
     background-image: url("/home/christian/.config/wlogout/icons/reboot_white.png");
+    border-radius: 0px;
+    margin: 50px 0px 50px 0px;
+}
+
+#shutdown {
+    background-image: url("/home/christian/.config/wlogout/icons/shutdown_white.png");
     border-radius: 0px 128px 128px 0px;
     margin: 50px 50px 50px 0px;
 }

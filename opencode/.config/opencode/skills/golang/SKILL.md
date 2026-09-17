@@ -30,7 +30,7 @@ cmd/
         main.go
 internal/
     configs/
-    database/
+    storage/
     handlers/
     middleware/
     models/
@@ -102,20 +102,34 @@ func handleGetUser(logger *Logger, userStore UserStore) fiber.Handler {
 
 ## Code style
 
+- Start simple. Escalate to complexity only when requirements demand it.
 - Optimise for readability and simplicity.
-- Use interfaces for external dependencies (storage, clients, publishers) to enable testing.
-- Keep interfaces small — one or two methods where possible.
+- Do not splinter logic into many small files or micro-functions. Keep related domain logic cohesive.
+- Do not create artificial parameter structs to bundle arguments. Pass explicit parameters unless they represent a domain entity.
+- Do not mirror every struct with an interface. Define lean interfaces (1–2 methods) at the consumer site only when multiple implementations exist or for external test boundaries.
+- Remove pure pass-through wrappers that only forward calls without adding behavior or transformation.
 - Prefer returning errors over panicking.
 - Use `context.Context` throughout and respect cancellation.
 - Use generics where they reduce duplication across 2+ concrete types.
 - Full names for identifiers — no abbreviations beyond well-known Go conventions (`ctx`, `err`, `req`, `resp`).
 - Keep code comments to a minimum.
 
+## Runtime services vs packages
+
+- **Runtime services** (`cmd/`, `internal/`):
+  - Minimise unexported helper methods on structs. Rely on package composition and clear linear execution.
+  - Use strict, opinionated function signatures. Avoid optional parameters, variadic options, and defensive `nil` checks for internal calls. Let boundary decoders handle validation.
+- **Packages** (`public/`):
+  - Encapsulate internal implementation details.
+  - Expose a minimal, stable exported API surface.
+
 ## Error handling
 
 - Return errors up the stack; handle (log/respond) at the top level.
 - Wrap errors with `fmt.Errorf("context: %w", err)` for traceability.
-- Define custom error types for domain-specific failures.
+- Do not write defensive boilerplate for unproven edge cases.
+- Avoid fallback ladders (chained speculative recovery logic).
+- Do not create custom error types or struct wrappers that merely wrap upstream errors. Propagate errors directly to top-level handlers.
 - Never ignore errors silently.
 
 ## Testing

@@ -24,28 +24,39 @@ Combine with other skills, like `api`, when planning or building those type of a
 - Use an src layout.
   - For runtime applications (target is not a package):
 
-  ```
-  src/
-      module1/
-          __init__.py
-          ....py
-      module2/
-          __init__.py
-          ....py
-      main.py
-  ```
+    ```
+    src/
+        module1/
+            __init__.py
+            ....py
+            submodule1/
+                __init__.py
+                ....py
+        module2/
+            __init__.py
+            ....py
+        main.py
+    ```
 
   - For packages, follow the standard src layout.
+  - We allow for submodules only when it improves organisation and reduces module sprawl and spaghetification.
 
-- Modules should be self-contained where possible, not relying on other modules unless avoiding significant duplication.
+- Modules should be self-contained and not rely on cross imports unless absolutely necessary.
+- Modules should have a clear and significant enough scope, such that we have fewer larger modules, opposed to many smaller modules, but without making a module's scope too large such that it holds too many important roles.
+  - As an example, if a service requires a database and object storage IO client, these should be consolidated into a single `storage/` module and not separate `database/` and `bucket/` modules. However, extending this to a redis client for managing caching exclusively would be considered a different concept and require its own module.
 - Modules should have a well-defined interface, making the code in `main.py` easy to read.
-- `main.py` performs orchestration, runtime management, and IO — it should not contain module logic.
+- `main.py` or other runtime files should manage orchestration, module wiring, and runtime concerns, and not contain application logic.
 - No `util` or `helper` files/modules — name them appropriately and place them within a relevant module.
 
 ## Code style
 
+- Start simple. Escalate to complexity only when requirements demand it.
 - Optimise for simplicity, readability, and composition.
 - Function and method scope should be singular where possible.
+- Do not splinter logic into many micro-files or micro-functions. Keep cohesive logic together.
+- Do not create artificial parameter bundles (single-use dataclasses or dicts to pass arguments). Pass explicit parameters directly.
+- Do not create redundant protocol mirrors. Use `typing.Protocol` only when multiple concrete implementations exist or for external boundary testing.
+- Remove pure pass-through wrappers that only delegate calls without adding behavior or transformation.
 - Adopt common design patterns where appropriate (dependency injection, facades, builder, adapter, etc.).
 - Functions, classes, and modules should be appropriately generic without over-engineering.
 - Prefer enums and Python objects over global variables and literal strings.
@@ -53,6 +64,16 @@ Combine with other skills, like `api`, when planning or building those type of a
 - Do not mix data objects and compute objects.
 - Do not use `*args` or `**kwargs` in place of named keyword arguments.
 - Use full names for Python objects (no abbreviations) and PEP 8 naming conventions.
+
+## Runtime services vs packages
+
+- **Runtime services** (applications):
+  - Minimise private methods (`_method`). Rely on top-level module composition and linear flow.
+  - Use strict, opinionated arguments. Avoid optional arguments (`arg: T | None = None`) and default fallbacks.
+  - Eliminate defensive runtime argument validation in internal functions. Rely on boundary schema validation (Pydantic) and type annotations.
+- **Packages** (libraries / shared dependencies):
+  - Encapsulate internal implementation details.
+  - Expose a minimal public API surface with boundary validation.
 
 ## Docstrings and comments
 
@@ -111,7 +132,10 @@ Combine with other skills, like `api`, when planning or building those type of a
 - Use structured logging when appropriate (e.g. deploying to k8s and deriving metrics from logs); otherwise use standard logging.
 - Log at the highest reasonable level of the stack, ideally near the orchestration layer — not scattered throughout.
 - In modules, prefer raising exceptions over handling them internally; let exceptions propagate up the stack to be logged.
-- Use custom exceptions where meaningful; only use standard exceptions when truly appropriate.
+- Do not write defensive boilerplate for unproven edge cases.
+- Avoid fallback ladders (chained speculative recovery logic).
+- Avoid nested `try...except` blocks.
+- Do not create custom exception wrappers around library or standard errors. Let native exceptions propagate to top-level handlers or middleware.
 - Catch specific exceptions only.
 
 ## Common packages

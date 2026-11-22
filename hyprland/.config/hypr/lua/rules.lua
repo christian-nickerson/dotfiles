@@ -40,7 +40,7 @@ hl.window_rule({
   no_focus = true,
 })
 
--- Inhibit idle when games or media players are focused (even in windowed/borderless mode).
+-- Inhibit idle when games or dedicated media players are focused (even in windowed/borderless mode).
 hl.window_rule({
   name = "inhibit-idle-focused-games-media",
   match = {
@@ -54,8 +54,8 @@ hl.window_rule({
 hl.window_rule({
   name = "inhibit-idle-fullscreen",
   match = {
-    fullscreen = true,
+    class = ".*",
   },
 
-  idle_inhibit = "always",
+  idle_inhibit = "fullscreen",
 })

@@ -20,10 +20,9 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("hyprctl setcursor rose-pine-hyprcursor 24")
   hl.exec_cmd("echo 'Xcursor.theme: BreezeX-RosePine-Linux\\nXcursor.size: 24' | xrdb -merge")
 
-  -- Start daemons idempotently (hypridle is managed by systemd hypridle.service on NixOS;
-  -- only spawn manually if the systemd service is not active and no instance is running).
+  -- Start daemons idempotently (hypridle is managed by systemd hypridle.service on NixOS).
   hl.exec_cmd("pidof hyprpaper || hyprpaper")
-  hl.exec_cmd("systemctl --user is-active --quiet hypridle.service || pidof hypridle || hypridle")
+  hl.exec_cmd("systemctl --user start hypridle.service")
   hl.exec_cmd("pidof swaync || swaync")
   hl.exec_cmd("~/.config/waybar/launch.sh")
   hl.exec_cmd('mailspring -b --password-store="gnome-libsecret"')

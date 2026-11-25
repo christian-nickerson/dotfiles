@@ -9,3 +9,10 @@ fi
 # (stow-managed: ~/.p10k.zsh -> ~/dotfiles/p10k/.p10k.zsh).
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true
+
+# OpenCode TUI settings. Inline so the TUI cannot overwrite them.
+export OPENCODE_CLI_CONFIG_CONTENT='{
+  "theme": { "name": "catppuccin-macchiato-transparent" },
+  "keybinds": { "leader": "ctrl+o" },
+  "session": { "sidebar": "hide", "thinking": "show" }
+}'

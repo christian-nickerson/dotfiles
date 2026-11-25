@@ -1,233 +1,272 @@
 {
   "$schema": "https://opencode.ai/theme.json",
-  "defs": {
-    "macRosewater": "#f4dbd6",
-    "macFlamingo": "#f0c6c6",
-    "macPink": "#f5bde6",
-    "macMauve": "#c6a0f6",
-    "macRed": "#ed8796",
-    "macMaroon": "#ee99a0",
-    "macPeach": "#f5a97f",
-    "macYellow": "#eed49f",
-    "macGreen": "#a6da95",
-    "macTeal": "#8bd5ca",
-    "macSky": "#91d7e3",
-    "macSapphire": "#7dc4e4",
-    "macBlue": "#8aadf4",
-    "macLavender": "#b7bdf8",
-    "macText": "#cad3f5",
-    "macSubtext1": "#b8c0e0",
-    "macSubtext0": "#a5adcb",
-    "macOverlay2": "#939ab7",
-    "macOverlay1": "#8087a2",
-    "macOverlay0": "#6e738d",
-    "macSurface2": "#5b6078",
-    "macSurface1": "#494d64",
-    "macSurface0": "#363a4f",
-    "macBase": "#24273a",
-    "macMantle": "#1e2030",
-    "macCrust": "#181926"
-  },
-  "theme": {
-    "primary": {
-      "dark": "macBlue",
-      "light": "macBlue"
-    },
-    "secondary": {
-      "dark": "macMauve",
-      "light": "macMauve"
-    },
-    "accent": {
-      "dark": "macPink",
-      "light": "macPink"
-    },
-    "error": {
-      "dark": "macRed",
-      "light": "macRed"
-    },
-    "warning": {
-      "dark": "macYellow",
-      "light": "macYellow"
-    },
-    "success": {
-      "dark": "macGreen",
-      "light": "macGreen"
-    },
-    "info": {
-      "dark": "macTeal",
-      "light": "macTeal"
-    },
+  "base": {
+    "categorical": ["blue", "purple", "green", "orange", "pink", "cyan", "red"],
     "text": {
-      "dark": "macText",
-      "light": "macText"
-    },
-    "textMuted": {
-      "dark": "macSubtext1",
-      "light": "macSubtext1"
+      "base": "$hue.neutral.100",
+      "muted": "$hue.neutral.200",
+      "faint": "$hue.neutral.400",
+      "action": {
+        "primary": {
+          "base": "$text.base",
+          "$disabled": "$hue.neutral.500",
+          "$focused": "$hue.neutral.900",
+          "$selected": "$hue.interactive.200"
+        },
+        "secondary": {
+          "base": "$text.muted",
+          "$hovered": "$text.base"
+        },
+        "destructive": {
+          "base": "$hue.neutral.900",
+          "$disabled": "$hue.neutral.500"
+        }
+      },
+      "formfield": {
+        "base": "$text.base",
+        "$hovered": "$hue.interactive.200",
+        "$focused": "$hue.interactive.200",
+        "$pressed": "$hue.interactive.200",
+        "$disabled": "$hue.neutral.500",
+        "$selected": "$hue.interactive.200"
+      },
+      "feedback": {
+        "error": {
+          "base": "$hue.red.200"
+        },
+        "warning": {
+          "base": "$hue.yellow.200"
+        },
+        "success": {
+          "base": "$hue.green.200"
+        },
+        "info": {
+          "base": "$hue.cyan.200"
+        }
+      }
     },
     "background": {
-      "dark": "none",
-      "light": "none"
-    },
-    "backgroundPanel": {
-      "dark": "macMantle",
-      "light": "macMantle"
-    },
-    "backgroundElement": {
-      "dark": "macCrust",
-      "light": "macCrust"
+      "base": "transparent",
+      "raised": {
+        "base": "$hue.neutral.800",
+        "high": "$hue.neutral.700",
+        "max": "$hue.neutral.600"
+      },
+      "action": {
+        "primary": {
+          "base": "transparent",
+          "$hovered": "$hue.neutral.700",
+          "$focused": "$hue.interactive.200",
+          "$selected": "transparent"
+        },
+        "secondary": {
+          "base": "transparent"
+        },
+        "destructive": {
+          "base": "$hue.red.200"
+        }
+      },
+      "formfield": {
+        "base": "$background.base"
+      },
+      "feedback": {
+        "error": {
+          "base": "$background.base"
+        },
+        "warning": {
+          "base": "$background.base"
+        },
+        "success": {
+          "base": "$background.base"
+        },
+        "info": {
+          "base": "$background.base"
+        }
+      }
     },
     "border": {
-      "dark": "macSurface0",
-      "light": "macSurface0"
+      "base": "$hue.neutral.700"
     },
-    "borderActive": {
-      "dark": "macSurface1",
-      "light": "macSurface1"
+    "scrollbar": {
+      "base": "$hue.neutral.500"
     },
-    "borderSubtle": {
-      "dark": "macSurface2",
-      "light": "macSurface2"
+    "diff": {
+      "text": {
+        "added": "$hue.green.200",
+        "removed": "$hue.red.200",
+        "context": "$hue.neutral.400",
+        "hunkHeader": "$hue.orange.200"
+      },
+      "background": {
+        "added": "#29342b",
+        "removed": "#3a2a31",
+        "context": "$hue.neutral.800"
+      },
+      "highlight": {
+        "added": "$hue.green.200",
+        "removed": "$hue.red.200"
+      },
+      "lineNumber": {
+        "text": "$hue.neutral.600",
+        "background": {
+          "added": "#223025",
+          "removed": "#2f242b"
+        }
+      }
     },
-    "diffAdded": {
-      "dark": "macGreen",
-      "light": "macGreen"
+    "syntax": {
+      "comment": "$hue.neutral.400",
+      "keyword": "$hue.purple.200",
+      "function": "$hue.blue.200",
+      "variable": "$hue.red.200",
+      "string": "$hue.green.200",
+      "number": "$hue.orange.200",
+      "type": "$hue.yellow.200",
+      "operator": "$hue.sky.200",
+      "punctuation": "$hue.neutral.100"
     },
-    "diffRemoved": {
-      "dark": "macRed",
-      "light": "macRed"
+    "markdown": {
+      "text": "$hue.neutral.100",
+      "heading": "$hue.purple.200",
+      "link": "$hue.blue.200",
+      "linkText": "$hue.sky.200",
+      "code": "$hue.green.200",
+      "blockQuote": "$hue.yellow.200",
+      "emphasis": "$hue.yellow.200",
+      "strong": "$hue.orange.200",
+      "horizontalRule": "$hue.neutral.300",
+      "listItem": "$hue.blue.200",
+      "listEnumeration": "$hue.sky.200",
+      "image": "$hue.blue.200",
+      "imageText": "$hue.sky.200",
+      "codeBlock": "$hue.neutral.100"
     },
-    "diffContext": {
-      "dark": "macOverlay2",
-      "light": "macOverlay2"
-    },
-    "diffHunkHeader": {
-      "dark": "macPeach",
-      "light": "macPeach"
-    },
-    "diffHighlightAdded": {
-      "dark": "macGreen",
-      "light": "macGreen"
-    },
-    "diffHighlightRemoved": {
-      "dark": "macRed",
-      "light": "macRed"
-    },
-    "diffAddedBg": {
-      "dark": "#29342b",
-      "light": "#29342b"
-    },
-    "diffRemovedBg": {
-      "dark": "#3a2a31",
-      "light": "#3a2a31"
-    },
-    "diffContextBg": {
-      "dark": "macMantle",
-      "light": "macMantle"
-    },
-    "diffLineNumber": {
-      "dark": "macSurface1",
-      "light": "macSurface1"
-    },
-    "diffAddedLineNumberBg": {
-      "dark": "#223025",
-      "light": "#223025"
-    },
-    "diffRemovedLineNumberBg": {
-      "dark": "#2f242b",
-      "light": "#2f242b"
-    },
-    "markdownText": {
-      "dark": "macText",
-      "light": "macText"
-    },
-    "markdownHeading": {
-      "dark": "macMauve",
-      "light": "macMauve"
-    },
-    "markdownLink": {
-      "dark": "macBlue",
-      "light": "macBlue"
-    },
-    "markdownLinkText": {
-      "dark": "macSky",
-      "light": "macSky"
-    },
-    "markdownCode": {
-      "dark": "macGreen",
-      "light": "macGreen"
-    },
-    "markdownBlockQuote": {
-      "dark": "macYellow",
-      "light": "macYellow"
-    },
-    "markdownEmph": {
-      "dark": "macYellow",
-      "light": "macYellow"
-    },
-    "markdownStrong": {
-      "dark": "macPeach",
-      "light": "macPeach"
-    },
-    "markdownHorizontalRule": {
-      "dark": "macSubtext0",
-      "light": "macSubtext0"
-    },
-    "markdownListItem": {
-      "dark": "macBlue",
-      "light": "macBlue"
-    },
-    "markdownListEnumeration": {
-      "dark": "macSky",
-      "light": "macSky"
-    },
-    "markdownImage": {
-      "dark": "macBlue",
-      "light": "macBlue"
-    },
-    "markdownImageText": {
-      "dark": "macSky",
-      "light": "macSky"
-    },
-    "markdownCodeBlock": {
-      "dark": "macText",
-      "light": "macText"
-    },
-    "syntaxComment": {
-      "dark": "macOverlay2",
-      "light": "macOverlay2"
-    },
-    "syntaxKeyword": {
-      "dark": "macMauve",
-      "light": "macMauve"
-    },
-    "syntaxFunction": {
-      "dark": "macBlue",
-      "light": "macBlue"
-    },
-    "syntaxVariable": {
-      "dark": "macRed",
-      "light": "macRed"
-    },
-    "syntaxString": {
-      "dark": "macGreen",
-      "light": "macGreen"
-    },
-    "syntaxNumber": {
-      "dark": "macPeach",
-      "light": "macPeach"
-    },
-    "syntaxType": {
-      "dark": "macYellow",
-      "light": "macYellow"
-    },
-    "syntaxOperator": {
-      "dark": "macSky",
-      "light": "macSky"
-    },
-    "syntaxPunctuation": {
-      "dark": "macText",
-      "light": "macText"
+    "@dialog": {
+      "background": {
+        "base": "$background.raised.base",
+        "action": {
+          "primary": {
+            "$hovered": "$background.raised.high"
+          }
+        }
+      }
+    }
+  },
+  "dark": {
+    "hue": {
+      "gray": {
+        "100": "#cad3f5",
+        "200": "#b8c0e0",
+        "300": "#a5adcb",
+        "400": "#939ab7",
+        "500": "#6e738d",
+        "600": "#494d64",
+        "700": "#363a4f",
+        "800": "#1e2030",
+        "900": "#181926"
+      },
+      "red": {
+        "100": "#f2abb6",
+        "200": "#ed8796",
+        "300": "#d57b8b",
+        "400": "#bc7080",
+        "500": "#a46474",
+        "600": "#8b5869",
+        "700": "#734d5e",
+        "800": "#5b4153",
+        "900": "#423548"
+      },
+      "orange": {
+        "100": "#f8c3a5",
+        "200": "#f5a97f",
+        "300": "#dc9977",
+        "400": "#c2896e",
+        "500": "#a97a66",
+        "600": "#8f6a5d",
+        "700": "#765a55",
+        "800": "#5d4a4d",
+        "900": "#433a44"
+      },
+      "yellow": {
+        "100": "#f3e1bc",
+        "200": "#eed49f",
+        "300": "#d5bf93",
+        "400": "#bdaa86",
+        "500": "#a4957a",
+        "600": "#8c806e",
+        "700": "#736b62",
+        "800": "#5b5655",
+        "900": "#424149"
+      },
+      "green": {
+        "100": "#c1e5b5",
+        "200": "#a6da95",
+        "300": "#96c48a",
+        "400": "#86af7f",
+        "500": "#779974",
+        "600": "#678369",
+        "700": "#576d5e",
+        "800": "#475853",
+        "900": "#384248"
+      },
+      "cyan": {
+        "100": "#aee2da",
+        "200": "#8bd5ca",
+        "300": "#7ec0b9",
+        "400": "#72aba7",
+        "500": "#659696",
+        "600": "#598084",
+        "700": "#4c6b73",
+        "800": "#405661",
+        "900": "#334150"
+      },
+      "sky": {
+        "100": "#b2e3eb",
+        "200": "#91d7e3",
+        "300": "#84c2ce",
+        "400": "#77acba",
+        "500": "#6997a5",
+        "600": "#5c8291",
+        "700": "#4f6c7c",
+        "800": "#425768",
+        "900": "#344153"
+      },
+      "blue": {
+        "100": "#adc6f7",
+        "200": "#8aadf4",
+        "300": "#7e9ddd",
+        "400": "#718cc7",
+        "500": "#657cb0",
+        "600": "#586c9a",
+        "700": "#4c5c83",
+        "800": "#404b6c",
+        "900": "#333b56"
+      },
+      "purple": {
+        "100": "#d7bcf9",
+        "200": "#c6a0f6",
+        "300": "#b291df",
+        "400": "#9f83c8",
+        "500": "#8b74b2",
+        "600": "#77659b",
+        "700": "#645784",
+        "800": "#50486d",
+        "900": "#3c3956"
+      },
+      "pink": {
+        "100": "#f8d1ee",
+        "200": "#f5bde6",
+        "300": "#dcabd1",
+        "400": "#c299bc",
+        "500": "#a986a7",
+        "600": "#8f7492",
+        "700": "#76627e",
+        "800": "#5d5069",
+        "900": "#433e54"
+      },
+      "accent": "$hue.purple",
+      "interactive": "$hue.blue",
+      "neutral": "$hue.gray"
     }
   }
 }

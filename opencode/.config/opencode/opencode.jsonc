@@ -1,34 +1,41 @@
 {
-    "$schema": "https://opencode.ai/config.json",
-    "autoupdate": false,
+  "$schema": "https://opencode.ai/config.json",
+  "update": "disable",
 
-    // Instructions
-    "instructions": [
-        "~/.config/opencode/instructions/style.md",
-        "~/.config/opencode/instructions/context7.md"
-    ],
+  // Instructions
+  "instructions": ["~/.config/opencode/instructions/*.md"],
 
-    // MCP & Skills
-    "mcp": {
-        "context7": {
-            "type": "remote",
-            "url": "https://mcp.context7.com/mcp",
-            "headers": {"CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"},
-            "enabled": true
-        },
+  // MCP
+  "mcp": {
+    "servers": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+        "oauth": false,
+        "headers": { "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}" },
+      },
+      "github": {
+        "type": "remote",
+        "url": "https://api.githubcopilot.com/mcp/",
+        "oauth": false,
+        "headers": { "Authorization": "Bearer {env:GITHUB_MCP_TOKEN}" },
+        "disabled": true,
+      },
+      "gitlab": {
+        "type": "remote",
+        "url": "https://gitlab.com/api/v4/mcp",
+        "disabled": true,
+      },
     },
+  },
 
-    "skills": {
-        "paths": ["~/.config/opencode/skills"]
+  // Providers
+  "providers": {
+    "amazon-bedrock": {
+      "settings": {
+        "region": "eu-west-2",
+        "profile": "bedrock",
+      },
     },
-
-    // Providers
-    "provider": {
-        "amazon-bedrock": {
-            "options": {
-                "region": "eu-west-2",
-                "profile": "bedrock"
-            }
-        }
-    },
+  },
 }
